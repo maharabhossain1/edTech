@@ -46,3 +46,12 @@ const layout = ({
 };
 
 export default layout;
+
+export function generateStaticParams() {
+  return [
+    { activityId: "fatiha-listening" },
+    { activityId: "fatiha-reading" },
+    { activityId: "baqarah-reading" },
+    { activityId: "baqarah-listening" },
+  ];
+}
