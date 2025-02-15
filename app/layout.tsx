@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Sidebar } from "@/components/sidebar";
 import { Header } from "@/components/header";
+import { AutoBreadcrumb } from "@/components/auto-breadcrumb";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,8 +35,11 @@ export default function RootLayout({
           <Sidebar />
           <div className="lg:pl-64">
             <Header />
-            <main className="py-6">
+            <main className="py-6 relative">
               <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div className="mb-6">
+                  <AutoBreadcrumb />
+                </div>
                 {children}
               </div>
             </main>

@@ -67,7 +67,7 @@ function QuizContent({ questions, handleIsDoingMode }: QuizProps) {
           className="inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors"
         >
           <ArrowLeft className="mr-2 h-4 w-4" />
-          Back to Assignment
+          Cancel Activity
         </button>
       </div>
 
@@ -153,8 +153,10 @@ function QuizContent({ questions, handleIsDoingMode }: QuizProps) {
 
 export default function Quiz(props: QuizProps) {
   return (
-    <QuizProvider questions={props.questions}>
-      <QuizContent {...props} />
-    </QuizProvider>
+    <div className="absolute z-20 top-0 right-0 left-0 bottom-0 bg-neutral-50 pt-6">
+      <QuizProvider questions={props.questions}>
+        <QuizContent {...props} />
+      </QuizProvider>
+    </div>
   );
 }

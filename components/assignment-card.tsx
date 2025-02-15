@@ -50,7 +50,7 @@ const AssignmentCard: React.FC<AssignmentCardProps> = ({ assignment }) => {
 
   return (
     <div>
-      <Card className="shadow transition-all duration-300 rounded-2xl">
+      <Card className="shadow-none transition-all duration-300 rounded-2xl">
         <CardContent className="p-6">
           <div className="flex items-start justify-between mb-4">
             <div>
