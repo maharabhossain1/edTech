@@ -70,7 +70,7 @@ const QuestionCard = ({ question, handleIsDoingMode }: QuestionCardProps) => {
   };
 
   return (
-    <Card className="hover:shadow-sm transition-all">
+    <Card className="shadow-none">
       <CardContent className="p-4">
         <div className="flex items-start justify-between gap-4">
           <div className="space-y-2">

@@ -1,12 +1,13 @@
 "use client";
 
 import AssignmentDetails from "@/components/assignment-details";
-import AssignmentQuestion from "@/components/assignment-question";
+import Quiz from "@/components/assignment-question";
 import {
   ActivityType,
   Question,
   QuestionType,
 } from "@/components/question-card";
+import { dummyQuestions } from "@/data/quiz";
 import React, { useState } from "react";
 
 export interface Assignment {
@@ -112,9 +113,10 @@ export default function AssignmentDetailsPage() {
   return (
     <div className="mx-auto">
       {isDoing ? (
-        <div>
-          <AssignmentQuestion handleIsDoingMode={handleIsDoingMode} />
-        </div>
+        <Quiz
+          handleIsDoingMode={handleIsDoingMode}
+          questions={dummyQuestions}
+        />
       ) : (
         <AssignmentDetails
           assignmentData={assignmentData}

@@ -105,7 +105,7 @@ const AssignmentsPage = () => {
           <TabsTrigger value="overdue">Overdue</TabsTrigger>
         </TabsList>
         <TabsContent value={filter} className="mt-6">
-          <div className="grid gap-6">
+          <div className="grid grid-cols-2 gap-6">
             {filteredAssignments.map(assignment => (
               <AssignmentCard key={assignment.id} assignment={assignment} />
             ))}

@@ -9,7 +9,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
 import {
   Headphones,
   BookOpen,
@@ -115,13 +114,6 @@ const ActivityCard = ({ activity }) => (
       </CardHeader>
       <CardContent>
         <div className="space-y-4">
-          <p className="text-sm text-gray-600">{activity.description}</p>
-
-          <div className="flex items-center gap-2">
-            <Progress value={activity.progress} className="flex-1" />
-            <span className="text-sm font-medium">{activity.progress}%</span>
-          </div>
-
           <div className="flex items-center justify-between text-sm">
             <div className="flex items-center gap-1">
               <Trophy className="h-4 w-4 text-yellow-500" />
@@ -135,11 +127,6 @@ const ActivityCard = ({ activity }) => (
           </div>
         </div>
       </CardContent>
-      <div className="px-6 pb-4 text-right">
-        <Button className="bg-indigo-700 hover:bg-indigo-800 rounded-lg text-sm font-semibold">
-          Continue <ChevronRight className="ml-1 h-6 w-6" />
-        </Button>
-      </div>
     </Card>
   </div>
 );

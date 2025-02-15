@@ -1,9 +1,10 @@
 import { AlertCircle, ChevronLeft } from "lucide-react";
 import Link from "next/link";
 import { Card, CardContent } from "./ui/card";
-import { Assignment } from "@/app/assignments/[assignmentId]/page";
 import QuestionCard from "./question-card";
 import ProgressSection from "./ProgressSection";
+import { Assignment } from "@/app/assignments/[assignmentId]/page";
+import { Button } from "./ui/button";
 
 export default function AssignmentDetails({
   assignmentData,
@@ -40,16 +41,27 @@ export default function AssignmentDetails({
                 totalQuestions={assignmentData.totalQuestions}
                 dueDate={assignmentData.dueDate}
               />
-
-              <div className="pt-4 border-t">
-                <div className="flex items-start gap-2">
-                  <AlertCircle className="h-5 w-5 text-blue-500 mt-0.5" />
-                  <div>
-                    <p className="font-medium">Teacher Instructions</p>
-                    <p className="text-sm text-muted-foreground">
-                      {assignmentData.teacherInstructions}
-                    </p>
+              <div className="flex justify-between items-end pt-4  border-t">
+                <div>
+                  <div className="flex items-start gap-2">
+                    <AlertCircle className="h-5 w-5 text-blue-500 mt-0.5" />
+                    <div>
+                      <p className="font-medium">Teacher Instructions</p>
+                      <p className="text-sm text-muted-foreground">
+                        {assignmentData.teacherInstructions}
+                      </p>
+                    </div>
                   </div>
+                </div>
+                <div>
+                  <Button
+                    onClick={handleIsDoingMode}
+                    className=" bg-indigo-700 hover:bg-indigo-800 rounded-lg text-sm font-semibold
+                    disabled:opacity-50 transition-all duration-200
+                    text-white"
+                  >
+                    Continue Assignment
+                  </Button>
                 </div>
               </div>
             </CardContent>
@@ -59,7 +71,7 @@ export default function AssignmentDetails({
         {/* Questions List */}
         <div className="space-y-4">
           <h2 className="text-xl font-semibold">Questions</h2>
-          <div className="space-y-3">
+          <div className="space-y-4">
             {assignmentData.questions.map(question => (
               <QuestionCard
                 key={question.id}
