@@ -1,22 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import {
-  Headphones,
-  BookOpen,
-  Trophy,
-  Check,
-  ChevronRight,
-} from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+import { Headphones, BookOpen, Check, ChevronRight } from "lucide-react";
 import {
   Command,
   CommandEmpty,
@@ -32,113 +19,98 @@ import {
 } from "@/components/ui/popover";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { Badge } from "@/components/ui/badge";
+
+type ActivityType = "listening" | "reading";
+
+interface Activity {
+  id: string;
+  title: string;
+  activityType: ActivityType;
+  description: string;
+  totalExercises: number;
+}
+
+const activities: Activity[] = [
+  {
+    id: "fatiha-listening",
+    title: "Surah Al-Fatiha",
+    activityType: "listening",
+    description: "Practice listening and pronunciation of verses",
+    totalExercises: 10,
+  },
+  {
+    id: "fatiha-reading",
+    title: "Surah Al-Fatiha",
+    activityType: "reading",
+    description: "Learn to read and understand the verses",
+    totalExercises: 8,
+  },
+  {
+    id: "baqarah-listening",
+    title: "Surah Al-Baqarah",
+    activityType: "listening",
+    description: "Practice listening and pronunciation of verses",
+    totalExercises: 15,
+  },
+  {
+    id: "baqarah-reading",
+    title: "Surah Al-Baqarah",
+    activityType: "reading",
+    description: "Learn to read and understand the verses",
+    totalExercises: 12,
+  },
+];
 
 const surahs = [
   { value: "al-fatiha", label: "Al-Fatiha" },
   { value: "al-baqarah", label: "Al-Baqarah" },
-  { value: "al-imran", label: "Al-Imran" },
 ];
 
-const activities = [
-  {
-    id: 1,
-    type: "listening",
-    surah: "al-fatiha",
-    surahName: "Al-Fatiha",
-    title: "Word Pronunciation",
-    description: "Practice pronouncing individual words",
-    progress: 65,
-    timeSpent: "45m",
-    accuracy: 80,
-    totalExercises: 10,
-  },
-  {
-    id: 2,
-    type: "reading",
-    surah: "al-baqarah",
-    surahName: "Al-Baqarah",
-    title: "Verse Arrangement",
-    description: "Arrange verses in correct order",
-    progress: 30,
-    timeSpent: "20m",
-    accuracy: 75,
-    totalExercises: 8,
-  },
-  {
-    id: 3,
-    type: "listening",
-    surah: "al-imran",
-    surahName: "Al-Imran",
-    title: "Tajweed Rules",
-    description: "Learn and practice Tajweed rules",
-    progress: 50,
-    timeSpent: "30m",
-    accuracy: 85,
-    totalExercises: 12,
-  },
-  {
-    id: 4,
-    type: "reading",
-    surah: "al-fatiha",
-    surahName: "Al-Fatiha",
-    title: "Memorization",
-    description: "Memorize verses with spaced repetition",
-    progress: 80,
-    timeSpent: "1h",
-    accuracy: 90,
-    totalExercises: 15,
-  },
-];
+interface ActivityCardProps {
+  activity: Activity;
+}
 
-const ActivityCard = ({ activity }) => (
-  <div>
-    <Card className="hover:shadow-md transition-all duration-300 group rounded-2xl">
-      <CardHeader>
-        <div className="flex items-start justify-between">
-          <div>
-            <CardTitle className="text-lg font-semibold">
-              {activity.title}
-            </CardTitle>
-            <CardDescription className="mt-1">
-              Surah {activity.surahName}
-            </CardDescription>
-          </div>
-          <div className="rounded-full w-9 h-9 bg-neutral-100 p-1.5 flex justify-center items-center">
-            {activity.type === "listening" ? (
-              <Headphones className="h-5 w-5 group-hover:text-indigo-600" />
-            ) : (
-              <BookOpen className="h-5 w-5 group-hover:text-indigo-600" />
-            )}
-          </div>
+const ActivityCard = ({ activity }: ActivityCardProps) => (
+  <Link href={`/activities/${activity.id}`}>
+    <div className="h-[180px] rounded-2xl border border-neutral-300 bg-white p-6 hover:shadow transition-all duration-300 flex flex-col justify-between">
+      <div className="flex items-start justify-between">
+        <div className="space-y-2">
+          <h3 className="text-lg font-semibold text-neutral-900">
+            {activity.title}
+          </h3>
+          <p className="text-neutral-600 text-sm">{activity.description}</p>
         </div>
-      </CardHeader>
-      <CardContent>
-        <div className="space-y-4">
-          <div className="flex items-center justify-between text-sm">
-            <div className="flex items-center gap-1">
-              <Trophy className="h-4 w-4 text-yellow-500" />
-              <span>{activity.accuracy}% accuracy</span>
-            </div>
-            <Badge
-              variant={activity.type === "listening" ? "secondary" : "outline"}
-            >
-              {activity.totalExercises} exercises
-            </Badge>
-          </div>
+        <div className=" flex items-center gap-2 w-8 h-8 rounded-full bg-indigo-50 justify-center">
+          {activity.activityType === "listening" ? (
+            <Headphones className="h-5 w-5 text-indigo-700" />
+          ) : (
+            <BookOpen className="h-5 w-5 text-indigo-700" />
+          )}
         </div>
-      </CardContent>
-    </Card>
-  </div>
+      </div>
+      <div className="mt-6">
+        <Badge variant="secondary"> {activity.totalExercises} exercises</Badge>
+      </div>
+    </div>
+  </Link>
 );
 
 export default function ActivitiesPage() {
-  const [activityType, setActivityType] = useState("all");
+  const [activityType, setActivityType] = useState<"all" | ActivityType>("all");
   const [selectedSurah, setSelectedSurah] = useState("");
   const [open, setOpen] = useState(false);
 
+  const handleActivityTypeChange = (value: string) => {
+    setActivityType(value as "all" | ActivityType);
+  };
+
   const filteredActivities = activities.filter(activity => {
-    const typeMatch = activityType === "all" || activity.type === activityType;
-    const surahMatch = !selectedSurah || activity.surah === selectedSurah;
+    const typeMatch =
+      activityType === "all" || activity.activityType === activityType;
+    const surahMatch =
+      !selectedSurah ||
+      activity.title.toLowerCase().includes(selectedSurah.toLowerCase());
     return typeMatch && surahMatch;
   });
 
@@ -152,11 +124,21 @@ export default function ActivitiesPage() {
       </div>
 
       <div className="flex flex-col sm:flex-row gap-4 justify-between">
-        <Tabs value={activityType} onValueChange={setActivityType}>
-          <TabsList className="grid w-full grid-cols-3">
-            <TabsTrigger value="all">All</TabsTrigger>
-            <TabsTrigger value="listening">Listening</TabsTrigger>
-            <TabsTrigger value="reading">Reading</TabsTrigger>
+        <Tabs
+          value={activityType}
+          onValueChange={handleActivityTypeChange}
+          className="w-full sm:w-auto"
+        >
+          <TabsList className="grid w-full sm:w-[300px] grid-cols-3 p-1 bg-neutral-100">
+            <TabsTrigger value="all" className="rounded-md">
+              All
+            </TabsTrigger>
+            <TabsTrigger value="listening" className="rounded-md">
+              Listening
+            </TabsTrigger>
+            <TabsTrigger value="reading" className="rounded-md">
+              Reading
+            </TabsTrigger>
           </TabsList>
         </Tabs>
 
