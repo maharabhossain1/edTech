@@ -59,7 +59,7 @@ function QuizContent({ questions, handleIsDoingMode }: QuizProps) {
   };
 
   return (
-    <div className="mx-auto max-w-4xl px-4">
+    <div className="mx-auto max-w-4xl px-4 py-6">
       {/* Top Navigation */}
       <div className="mb-8">
         <button
@@ -153,7 +153,7 @@ function QuizContent({ questions, handleIsDoingMode }: QuizProps) {
 
 export default function Quiz(props: QuizProps) {
   return (
-    <div className="absolute z-20 top-0 right-0 left-0 bottom-0 bg-neutral-50 pt-6">
+    <div className="absolute inset-0 z-20 bg-neutral-50 overflow-y-auto pb-8">
       <QuizProvider questions={props.questions}>
         <QuizContent {...props} />
       </QuizProvider>
