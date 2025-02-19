@@ -23,7 +23,7 @@ export default function PasswordReset() {
   };
 
   return (
-    <div>
+    <div className="space-y-8">
       <div>
         <h2 className="text-xl font-semibold">Password Reset</h2>
       </div>

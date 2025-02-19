@@ -1,5 +1,7 @@
 import type { Config } from "tailwindcss";
 import tailwindcssAnimate from 'tailwindcss-animate'
+import { fontFamily } from 'tailwindcss/defaultTheme';
+
 
 export default {
 	darkMode: ["class"],
@@ -10,6 +12,18 @@ export default {
 	],
 	theme: {
 		extend: {
+			fontFamily: {
+				plus_jakarta_sans: ['var(--font-plus_jakarta_sans)', ...fontFamily.sans],
+				ibm_plex_sans_arabic: [
+					'var(--font-ibm_plex_sans_arabic)',
+					...fontFamily.mono,
+				],
+				lateef: ['var(--font-lateef)'],
+				amiri: ['var(--font-amiri)', ...fontFamily.mono],
+				qalam: ['var(--font-qalam)', ...fontFamily.mono],
+				meQuran: ['var(--font-meQuran)', ...fontFamily.mono],
+				kfgqpc_hafs: ['var(--font-kfgqpc_hafs)', ...fontFamily.mono],
+			},
 			colors: {
 				indigo: {
 					DEFAULT: '#FCFAFF',

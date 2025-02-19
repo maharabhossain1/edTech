@@ -31,7 +31,10 @@ export default function SettingsLayout({
           <aside className="lg:w-1/5" data-test="settings-sidebar">
             <SettingsSidebarNav items={sidebarNavItems} />
           </aside>
-          <div className="max-w-[536px] flex-1" data-test="settings-content">
+          <div
+            className="max-w-[536px] flex-1 pb-8"
+            data-test="settings-content"
+          >
             {children}
           </div>
         </div>

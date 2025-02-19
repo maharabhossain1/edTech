@@ -10,7 +10,7 @@ export function SurahList({ surahs }: SurahListProps) {
   return (
     <div className="grid gap-4 grid-cols-3">
       {surahs.map(surah => (
-        <Link key={surah.number} href={`/surah/${surah.number}`}>
+        <Link key={surah.number} href={`/surahs/${surah.number}`}>
           <div className="p-4 bg-neutral cursor-pointer rounded-xl border border-neutral-300 hover:shadow">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-4">

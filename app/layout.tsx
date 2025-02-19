@@ -1,16 +1,19 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { Sidebar } from "@/components/sidebar";
 import { Header } from "@/components/header";
 import { AutoBreadcrumb } from "@/components/auto-breadcrumb";
-
-const plus_jakarta_sans = Plus_Jakarta_Sans({
-  weight: ["200", "300", "400", "500", "600", "700", "800"],
-  style: ["normal", "italic"],
-  subsets: ["latin"],
-  display: "swap",
-});
+import {
+  amiri,
+  bismillah,
+  ibm_plex_sans_arabic,
+  kfgqpc_hafs,
+  kitab,
+  lateef,
+  me_quran,
+  plus_jakarta_sans,
+  qalam,
+} from "@/lib/fonts";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -21,13 +24,22 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const fontClasses = [
+    plus_jakarta_sans.variable,
+    ibm_plex_sans_arabic.variable,
+    lateef.variable,
+    qalam.variable,
+    me_quran.variable,
+    amiri.variable,
+    kfgqpc_hafs.variable,
+    kitab.variable,
+    bismillah.variable,
+  ].join(" ");
+
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        suppressHydrationWarning
-        className={`${plus_jakarta_sans.className} antialiased`}
-      >
-        <div className="min-h-screen flex bg-neutral-50 text-neutral-900">
+    <html lang="en" suppressHydrationWarning className={`${fontClasses}`}>
+      <body suppressHydrationWarning className={`antialiased`}>
+        <div className="min-h-screen flex bg-neutral-50 text-neutral-900 font-plus_jakarta_sans">
           <Sidebar />
           <div className="flex-1 lg:pl-64">
             <Header />
