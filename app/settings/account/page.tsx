@@ -36,39 +36,43 @@ export default function AccountSettings() {
       </div>
       <Separator />
       <div className="space-y-6 text-sm">
+        <div className="grid grid-cols-2 gap-2">
+          {" "}
+          <div className="space-y-2">
+            <Label htmlFor="firstName">First Name</Label>
+            {isEditing ? (
+              <Input
+                id="firstName"
+                value={userInfo.firstName}
+                onChange={e =>
+                  setUserInfo({ ...userInfo, firstName: e.target.value })
+                }
+              />
+            ) : (
+              <p className="text-sm text-muted-foreground">
+                {userInfo.firstName}
+              </p>
+            )}
+          </div>
+          {/* Last Name */}
+          <div className="space-y-2">
+            <Label htmlFor="lastName">Last Name</Label>
+            {isEditing ? (
+              <Input
+                id="lastName"
+                value={userInfo.lastName}
+                onChange={e =>
+                  setUserInfo({ ...userInfo, lastName: e.target.value })
+                }
+              />
+            ) : (
+              <p className="text-sm text-muted-foreground">
+                {userInfo.lastName}
+              </p>
+            )}
+          </div>
+        </div>
         {/* First Name */}
-        <div className="space-y-2">
-          <Label htmlFor="firstName">First Name</Label>
-          {isEditing ? (
-            <Input
-              id="firstName"
-              value={userInfo.firstName}
-              onChange={e =>
-                setUserInfo({ ...userInfo, firstName: e.target.value })
-              }
-            />
-          ) : (
-            <p className="text-sm text-muted-foreground">
-              {userInfo.firstName}
-            </p>
-          )}
-        </div>
-
-        {/* Last Name */}
-        <div className="space-y-2">
-          <Label htmlFor="lastName">Last Name</Label>
-          {isEditing ? (
-            <Input
-              id="lastName"
-              value={userInfo.lastName}
-              onChange={e =>
-                setUserInfo({ ...userInfo, lastName: e.target.value })
-              }
-            />
-          ) : (
-            <p className="text-sm text-muted-foreground">{userInfo.lastName}</p>
-          )}
-        </div>
 
         {/* Username (non-editable) */}
         <div className="space-y-2">
