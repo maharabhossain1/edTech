@@ -9,7 +9,7 @@ const navItems = [
   { icon: Book, text: "Surahs", href: "/surahs" },
   { icon: Layout, text: "Activities", href: "/activities" },
   { icon: Calendar, text: "Assignments", href: "/assignments" },
-  { icon: Settings, text: "Settings", href: "#" },
+  { icon: Settings, text: "Settings", href: "/settings/quran" },
 ];
 
 export function Sidebar() {
