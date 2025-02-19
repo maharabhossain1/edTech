@@ -1,5 +1,4 @@
-import { AlertCircle, ChevronLeft } from "lucide-react";
-import Link from "next/link";
+import { AlertCircle } from "lucide-react";
 import { Card, CardContent } from "./ui/card";
 import QuestionCard from "./question-card";
 import ProgressSection from "./ProgressSection";
@@ -15,14 +14,6 @@ export default function AssignmentDetails({
 }) {
   return (
     <div>
-      <Link
-        href="/assignments"
-        className="inline-flex items-center text-sm text-muted-foreground hover:text-primary mb-6"
-      >
-        <ChevronLeft className="h-4 w-4 mr-1" />
-        Back to Assignments
-      </Link>
-
       <div className="space-y-6">
         {/* Header Section */}
         <div className="space-y-4">
