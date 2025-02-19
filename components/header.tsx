@@ -1,6 +1,5 @@
 "use client";
-
-import { User } from "lucide-react";
+import { User, Settings, UserCircle, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import {
@@ -43,14 +42,21 @@ export function Header() {
                 <DropdownMenuItem
                   onClick={() => handleNavigation("/settings/account")}
                 >
+                  <UserCircle className="mr-2 h-4 w-4" />
                   Profile
                 </DropdownMenuItem>
                 <DropdownMenuItem
                   onClick={() => handleNavigation("/settings/quran")}
                 >
+                  <Settings className="mr-2 h-4 w-4" />
                   Settings
                 </DropdownMenuItem>
-                <DropdownMenuItem onClick={handleLogout}>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem
+                  onClick={handleLogout}
+                  className="text-red-500 focus:text-red-600 focus:bg-red-50"
+                >
+                  <LogOut className="mr-2 h-4 w-4" />
                   Logout
                 </DropdownMenuItem>
               </DropdownMenuContent>
