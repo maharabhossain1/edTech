@@ -62,7 +62,7 @@ const AssignmentCard: React.FC<AssignmentCardProps> = ({ assignment }) => {
             </Badge>
           </div>
 
-          <Progress value={assignment.progress} className="mb-4" />
+          <Progress value={assignment.progress} className="mb-4 h-2" />
 
           <div className="grid grid-cols-3 gap-4 mb-6">
             <div className="flex items-center gap-2">
