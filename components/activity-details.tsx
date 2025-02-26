@@ -126,7 +126,10 @@ export default function ActivityDetail({ activityId }: ActivityDetailProps) {
           <CardHeader className="pb-3">
             <div className="flex justify-between items-center">
               <h2 className="text-lg font-medium">Activity Progress</h2>
-              <Badge variant="outline" className="font-normal">
+              <Badge
+                variant="outline"
+                className="font-normal bg-neutral-100 text-neutral-700 "
+              >
                 {activity.completedQuestions}/{activity.totalQuestions}{" "}
                 Questions Completed
               </Badge>

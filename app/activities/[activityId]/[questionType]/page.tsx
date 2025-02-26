@@ -1,29 +1,17 @@
 "use client";
 
-import ActivityQuestions from "@/components/activity-types-details";
 import Quiz from "@/components/assignment-question";
 import { dummyQuestions } from "@/data/quiz";
-import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const Page = () => {
-  const [isDoing, setDoing] = useState(false);
-
-  const handleIsDoingMode = () => {
-    setDoing(!isDoing);
+  const router = useRouter();
+  const backToPreviousNav = () => {
+    router.back();
   };
   return (
     <div>
-      {isDoing ? (
-        <Quiz
-          handleIsDoingMode={handleIsDoingMode}
-          questions={dummyQuestions}
-        />
-      ) : (
-        <ActivityQuestions
-          activityId="listening"
-          handleIsDoingMode={handleIsDoingMode}
-        />
-      )}
+      <Quiz handleIsDoingMode={backToPreviousNav} questions={dummyQuestions} />
     </div>
   );
 };
