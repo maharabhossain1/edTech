@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Headphones, BookOpen, CheckCircle } from "lucide-react";
+import { Headphones, BookOpen } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 
@@ -107,7 +107,7 @@ const ActivityCard = ({ activity }: ActivityCardProps) => {
 
   return (
     <Link href={`/activities/${activity.id}`}>
-      <div className="h-auto rounded-2xl border border-neutral-200 bg-white p-6 hover:shadow-md transition-all duration-300 flex flex-col justify-between">
+      <div className="h-auto rounded-2xl border border-neutral-300 bg-white p-6 hover:shadow-md transition-all duration-300 flex flex-col justify-between">
         <div className="flex items-start justify-between">
           <div className="space-y-2">
             <div className="flex items-center gap-2">
@@ -133,22 +133,6 @@ const ActivityCard = ({ activity }: ActivityCardProps) => {
               <span className="text-xs font-medium">{progress}%</span>
             </div>
             <Progress value={progress} className="h-1.5" />
-          </div>
-
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-1">
-              {activity.status !== "not-started" && (
-                <>
-                  <CheckCircle className="h-4 w-4 text-indigo-600" />
-                  <span className="text-sm text-indigo-600 font-medium">
-                    {activity.accuracy} accuracy
-                  </span>
-                </>
-              )}
-            </div>
-            <div className="flex items-center gap-2">
-              {getStatusBadge(activity.status)}
-            </div>
           </div>
 
           <div className="pt-2 border-t border-neutral-100">
@@ -193,7 +177,7 @@ export default function ActivitiesPage() {
           onValueChange={handleActivityTypeChange}
           className="w-full sm:w-auto"
         >
-          <TabsList className="grid w-full sm:w-[300px] grid-cols-3 p-1 bg-neutral-100">
+          <TabsList className="grid w-full sm:w-[300px] grid-cols-3 p-1 ">
             <TabsTrigger value="all" className="rounded-md">
               All
             </TabsTrigger>
