@@ -11,10 +11,13 @@ import { dummyQuestions } from "@/data/quiz";
 import React, { useState } from "react";
 
 export interface Assignment {
+  id: number;
   title: string;
   surah: string;
   dueDate: string;
   progress: number;
+  completionDate: string;
+  accuracy: string;
   completedQuestions: number;
   totalQuestions: number;
   teacherInstructions: string;
@@ -22,13 +25,13 @@ export interface Assignment {
 }
 
 const assignmentData: Assignment = {
+  id: 1,
   title: "Word Pronunciation Practice",
   surah: "Surah Al-Fatiha",
-  dueDate: "2/15/2024",
-  progress: 65,
-  completedQuestions: 6,
-  totalQuestions: 10,
+  completionDate: "2024-02-15",
+  accuracy: "85%",
   teacherInstructions: "Complete all exercises. Focus on proper pronunciation.",
+  totalQuestions: 10,
   questions: [
     {
       id: 1,
@@ -49,7 +52,7 @@ const assignmentData: Assignment = {
       type: QuestionType.VERSE_ARRANGEMENT,
       title:
         "Arrange verses 4-6 in order: نَسْتَعِينُ, إِيَّاكَ نَعْبُدُ, إِيَّاكَ",
-      status: "not-attempted",
+      status: "correct",
       activityType: ActivityType.READING,
     },
     {
@@ -70,7 +73,7 @@ const assignmentData: Assignment = {
       id: 6,
       type: QuestionType.VERSE_ARRANGEMENT,
       title: "Arrange the final verses in sequence",
-      status: "not-attempted",
+      status: "correct",
       activityType: ActivityType.LISTENING,
     },
     {
@@ -84,7 +87,7 @@ const assignmentData: Assignment = {
       id: 8,
       type: QuestionType.WORD_ARRANGEMENT,
       title: "Arrange: عَلَيْهِمْ أَنْعَمْتَ الَّذِينَ صِرَاطَ",
-      status: "not-attempted",
+      status: "correct",
       activityType: ActivityType.LISTENING,
     },
     {
@@ -98,7 +101,7 @@ const assignmentData: Assignment = {
       id: 10,
       type: QuestionType.FILL_BLANKS,
       title: "Complete the final verse: وَلَا ___ (wa lad-daalleen)",
-      status: "not-attempted",
+      status: "correct",
       activityType: ActivityType.LISTENING,
     },
   ],

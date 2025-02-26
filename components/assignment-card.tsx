@@ -2,18 +2,13 @@ import * as React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Progress } from "@/components/ui/progress";
-import { Trophy, AlertCircle, Calendar, ChevronRight } from "lucide-react";
+import { Trophy, Calendar, ChevronRight } from "lucide-react";
 import Link from "next/link";
 
 export const ASSIGNMENT_STATUS = {
   completed: {
     badgeTitle: "Completed",
     colorVariant: "success",
-  },
-  "in-progress": {
-    badgeTitle: "In Progress",
-    colorVariant: "secondary",
   },
   "not-started": {
     badgeTitle: "Not Started",
@@ -45,67 +40,82 @@ interface AssignmentCardProps {
   assignment: Assignment;
 }
 
-const AssignmentCard: React.FC<AssignmentCardProps> = ({ assignment }) => {
+const AssignmentCard: React.FC<AssignmentCardProps> = ({
+  assignment,
+  handleIsDoingMode,
+}) => {
   const statusConfig = ASSIGNMENT_STATUS[assignment.status];
+  const isCompleted = assignment.status === "completed";
 
   return (
-    <div>
-      <Card className="shadow-none transition-all duration-300 rounded-2xl">
-        <CardContent className="p-6">
-          <div className="flex items-start justify-between mb-4">
-            <div>
-              <h3 className="text-xl font-semibold mb-1">{assignment.title}</h3>
-              <p className="text-neutral-600">{assignment.surah}</p>
-            </div>
-            <Badge variant={statusConfig.colorVariant}>
-              {statusConfig.badgeTitle}
-            </Badge>
+    <Card className="shadow-sm border hover:shadow-md transition-all duration-300 rounded-2xl h-full">
+      <CardContent className="p-6 flex flex-col h-full">
+        <div className="flex items-start justify-between mb-4">
+          <div className="flex-1">
+            <h3 className="text-xl font-semibold mb-1 line-clamp-1">
+              {assignment.title}
+            </h3>
+            <p className="text-neutral-600 line-clamp-1">{assignment.surah}</p>
           </div>
+          <Badge
+            variant={statusConfig.colorVariant}
+            className="ml-2 whitespace-nowrap"
+          >
+            {statusConfig.badgeTitle}
+          </Badge>
+        </div>
 
-          <Progress value={assignment.progress} className="mb-4 h-2" />
-
-          <div className="grid grid-cols-3 gap-4 mb-6">
-            <div className="flex items-center gap-2">
-              <div className="rounded-full w-8 h-8 bg-neutral-100 flex justify-center items-center">
-                <Trophy className="h-4 w-4 text-yellow-500" />
-              </div>
-
-              <span className="text-sm text-neutral-600">
-                {assignment.accuracy}
-              </span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="rounded-full w-8 h-8 bg-neutral-100 flex justify-center items-center">
-                <AlertCircle className="h-4 w-4 text-neutral-500" />
-              </div>
-              <span className="text-sm text-neutral-600">
-                {assignment.completed}/{assignment.activities} exercises
-              </span>
-            </div>
+        <div className="flex-1 mb-4">
+          <div className="flex items-center justify-between gap-3">
             <div className="flex items-center gap-2">
               <div className="rounded-full w-8 h-8 bg-neutral-100 flex justify-center items-center">
                 <Calendar className="h-4 w-4 text-neutral-500" />
               </div>
               <span className="text-sm text-neutral-600">
-                {new Date(assignment.dueDate).toLocaleDateString()}
+                Due: {new Date(assignment.dueDate).toLocaleDateString()}
               </span>
             </div>
+            {isCompleted && (
+              <div className="flex items-center gap-2">
+                <div className="rounded-full w-8 h-8 bg-neutral-100 flex justify-center items-center">
+                  <Trophy className="h-4 w-4 text-yellow-500" />
+                </div>
+                <span className="text-sm text-neutral-600">
+                  {assignment.accuracy} accuracy
+                </span>
+              </div>
+            )}
           </div>
+        </div>
 
-          <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between mt-auto pt-2 border-t border-neutral-100">
+          {isCompleted ? (
             <p className="text-sm text-neutral-500">
-              Progress: {assignment.progress}%
+              {assignment.completed}/{assignment.activities} exercises
             </p>
-            <Link href={"/assignments/1"}>
-              <Button className="bg-indigo-700 hover:bg-indigo-800 rounded-lg text-sm font-semibold">
-                {assignment.status === "completed" ? "Review" : "Continue"}
+          ) : (
+            <p className="text-sm text-neutral-500">Ready to start</p>
+          )}
+
+          {isCompleted ? (
+            <Link href={`/assignments/${assignment.id}`}>
+              <Button className="bg-indigo-700 hover:bg-indigo-800 rounded-lg text-sm font-semibold px-4 py-2">
+                {"Review"}
                 <ChevronRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>
-          </div>
-        </CardContent>
-      </Card>
-    </div>
+          ) : (
+            <Button
+              onClick={handleIsDoingMode}
+              className="bg-indigo-700 hover:bg-indigo-800 rounded-lg text-sm font-semibold px-4 py-2"
+            >
+              {"Start"}
+              <ChevronRight className="ml-2 h-4 w-4" />
+            </Button>
+          )}
+        </div>
+      </CardContent>
+    </Card>
   );
 };
 
