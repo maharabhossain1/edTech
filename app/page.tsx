@@ -115,7 +115,7 @@ export default function DashboardPage() {
 
       {/* Recent Activities and Assignments */}
       <div className="grid gap-6 md:grid-cols-2">
-        <Card className="rounded-2xl h-max">
+        <Card className="rounded-2xl">
           <CardHeader>
             <div className="flex items-center justify-between">
               <CardTitle className="text-lg font-medium">
@@ -137,7 +137,7 @@ export default function DashboardPage() {
                       )}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <div className="flex items-center justify-between mb-1">
+                      <div className="flex items-center justify-between">
                         <p className="font-medium">{activity.title}</p>
                         <div className="flex items-center space-x-2">
                           <div className="flex items-center space-x-1">
@@ -179,7 +179,7 @@ export default function DashboardPage() {
             </div>
           </CardContent>
         </Card>
-        <Card className="rounded-2xl h-max">
+        <Card className="rounded-2xl">
           <CardHeader>
             <div className="flex items-center justify-between">
               <CardTitle className="text-lg font-medium">
@@ -197,7 +197,7 @@ export default function DashboardPage() {
                   className="p-4 rounded-lg border border-neutral-200"
                   key={index}
                 >
-                  <div className="space-y-3">
+                  <div className="">
                     <div className="flex items-start justify-between">
                       <div>
                         <h4 className="font-medium">{assignment.title}</h4>
