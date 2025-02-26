@@ -91,7 +91,7 @@ const AssignmentCard: React.FC<AssignmentCardProps> = ({
         <div className="flex items-center justify-between mt-auto pt-2 border-t border-neutral-100">
           {isCompleted ? (
             <p className="text-sm text-neutral-500">
-              {assignment.completed}/{assignment.activities} exercises
+              {assignment.activities} exercises
             </p>
           ) : (
             <p className="text-sm text-neutral-500">Ready to start</p>
