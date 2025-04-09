@@ -22,6 +22,8 @@ export const surahs: Surah[] = [
     englishName: "The Opening",
     englishNameTranslation: "The Opening",
     arabicText: "الفاتحة",
+    verses: 7,
+    revelation: 1,
   },
   {
     number: 2,
@@ -29,6 +31,8 @@ export const surahs: Surah[] = [
     englishName: "The Cow",
     englishNameTranslation: "The Cow",
     arabicText: "البقرة",
+    verses: 286,
+    revelation: 2,
   },
   {
     number: 3,
@@ -36,6 +40,8 @@ export const surahs: Surah[] = [
     englishName: "The Family of Imran",
     englishNameTranslation: "The Family of Imran",
     arabicText: "آل عمران",
+    verses: 200,
+    revelation: 2,
   },
   {
     number: 4,
@@ -43,6 +49,8 @@ export const surahs: Surah[] = [
     englishName: "The Women",
     englishNameTranslation: "The Women",
     arabicText: "النساء",
+    verses: 176,
+    revelation: 2,
   },
   {
     number: 5,
@@ -50,6 +58,8 @@ export const surahs: Surah[] = [
     englishName: "The Table",
     englishNameTranslation: "The Table",
     arabicText: "المائدة",
+    verses: 176,
+    revelation: 2,
   },
   {
     number: 6,
@@ -57,6 +67,8 @@ export const surahs: Surah[] = [
     englishName: "The Cattle",
     englishNameTranslation: "The Cattle",
     arabicText: "الأنعام",
+    verses: 120,
+    revelation: 2,
   },
   {
     number: 7,
@@ -64,6 +76,8 @@ export const surahs: Surah[] = [
     englishName: "The Heights",
     englishNameTranslation: "The Heights (or The Wall with Elevations)",
     arabicText: "الأعراف",
+    verses: 165,
+    revelation: 1,
   },
   {
     number: 8,
@@ -71,6 +85,8 @@ export const surahs: Surah[] = [
     englishName: "The Spoils of War",
     englishNameTranslation: "The Spoils of War",
     arabicText: "الأنفال",
+    verses: 206,
+    revelation: 1,
   },
   {
     number: 9,
@@ -78,6 +94,8 @@ export const surahs: Surah[] = [
     englishName: "The Repentance",
     englishNameTranslation: "The Repentance",
     arabicText: "التوبة",
+    verses: 129,
+    revelation: 2,
   },
   {
     number: 10,
@@ -85,6 +103,8 @@ export const surahs: Surah[] = [
     englishName: "Jonah",
     englishNameTranslation: "Jonah",
     arabicText: "يونس",
+    verses: 109,
+    revelation: 1,
   },
   {
     number: 11,
@@ -92,6 +112,8 @@ export const surahs: Surah[] = [
     englishName: "Hud",
     englishNameTranslation: "Hud",
     arabicText: "هود",
+    verses: 109,
+    revelation: 1,
   },
   {
     number: 12,
@@ -99,6 +121,8 @@ export const surahs: Surah[] = [
     englishName: "Joseph",
     englishNameTranslation: "Joseph",
     arabicText: "يوسف",
+    verses: 109,
+    revelation: 1,
   },
 ]
 

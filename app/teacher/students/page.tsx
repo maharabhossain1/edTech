@@ -106,7 +106,7 @@ export default function StudentsPage() {
   });
 
   return (
-    <div className="container mx-auto py-8 space-y-8">
+    <div className="container mx-auto space-y-8">
       <div className="flex items-center justify-between">
         <div className="space-y-1">
           <h1 className="text-3xl font-bold tracking-tight">Students</h1>
@@ -199,9 +199,6 @@ export default function StudentsPage() {
                             <div className="flex flex-col">
                               <span className="font-medium">
                                 {student.firstName} {student.lastName}
-                              </span>
-                              <span className="text-sm text-muted-foreground">
-                                {student.displayName}
                               </span>
                             </div>
                           </div>

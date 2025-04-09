@@ -1,7 +1,10 @@
 "use client";
 
+import { SURAH_DETAILS } from "@/data/surah-details";
 import VerseDisplayCard from "./verse-display-card";
 import KabaIcon from "@/icons/kaba-icon.svg";
+import { SurahPosition } from "@/lib/types/surah";
+import SurahInfoModal from "./surah-info-modal";
 
 const dummyData = [
   {
@@ -194,6 +197,19 @@ const dummyData = [
 ];
 
 const TranslationView = ({}) => {
+  const currentSurahDetails = SURAH_DETAILS.find(detail => detail.no === 1);
+  const matchingSurah: SurahPosition = {
+    surah: {
+      number: 1,
+      name: "Al-Fatihah",
+      englishName: "The Opening",
+      englishNameTranslation: "The Opening",
+      arabicText: "الفاتحة",
+      verses: 7,
+      revelation: 1,
+    },
+    startIndex: 0,
+  };
   return (
     <div className="space-y-4">
       <div className="mt-4 flex items-center justify-between rounded-2xl border p-4 md:mt-6 bg-neutral border-neutral-300 shadow">
@@ -208,6 +224,14 @@ const TranslationView = ({}) => {
               <p className="text-text-color-light text-xs">7 Ayahs</p>
             </div>
           </div>
+        </div>
+        <div className="flex items-center">
+          {currentSurahDetails && (
+            <SurahInfoModal
+              surahDetails={currentSurahDetails}
+              surahBasicInfo={matchingSurah}
+            />
+          )}
         </div>
         {/* <p
           className="theme-palette-normal bismillah text-sm font-semibold text-neutral-500 md:text-2xl"

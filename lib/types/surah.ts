@@ -4,7 +4,10 @@ export interface Surah {
     englishName: string
     englishNameTranslation: string
     arabicText: string
+    revelation: number;
+    verses: number
 }
+
 
 export interface LastRead {
     surah: string
@@ -14,5 +17,10 @@ export interface LastRead {
 export interface QuickLink {
     name: string
     href: string
+}
+
+export interface SurahPosition {
+    surah: Surah;
+    startIndex: number;
 }
 
